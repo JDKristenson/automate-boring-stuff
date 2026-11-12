@@ -1,37 +1,77 @@
-# Automate the Boring Stuff with Python - Offline Companion
+# Automate the Boring Stuff with Python — Learning Companion
 
-Your complete, self-contained environment for learning Python automation from "Automate the Boring Stuff with Python" by Al Sweigart (3rd Edition).
+A learning/reference scaffold for *Automate the Boring Stuff with Python* by **Al Sweigart (3rd Edition)**, not a complete offline distribution or a portfolio of completed exercises.
+
+## Status, provenance, and rights
+
+Source review on **2026-11-12** checked default branch `master` at [`c2e237fa1cb73f8448c2d90fa160d57f083de16f`](https://github.com/JDKristenson/automate-boring-stuff/commit/c2e237fa1cb73f8448c2d90fa160d57f083de16f). Its one reachable commit is dated 2025-12-24, authored/committed as **JDKristenson**, with an explicit **Warp** co-author trailer. Preserve those human and AI credits. This documents contribution history, not file-by-file original authorship or course completion. This documentation and diagram cleanup was AI-assisted by Reason.
+
+- The book and chapter progression belong to Al Sweigart's learning material. Local summaries, cheat sheets, and setup scaffolding are companion material; their individual derivation is not established by the initial commit.
+- `book_resources/official_code` is a Git gitlink pinned to `0fd54d7c3bf114dff5c16782fd6201e2f6b2a1dc`. There is **no tracked `.gitmodules` URL**. Its upstream identity, contents, and license are unresolved; do not assume the name proves it is official or initialize it from a guessed URL. The gitlink is unchanged by this cleanup.
+- No repository-level license or notice was present at the reviewed head. Public availability does not grant unrestricted reuse. No new license grant is made here. Confirm rights for local material and preserve upstream licenses/notices before redistribution; the book's terms do not automatically establish code or local-file licensing.
+- Consult the [book website](https://automatetheboringstuff.com/) and the third edition's copyright notice for book reuse terms and edition-specific attribution. Keep book, course, upstream, human, and AI credits separate; linking a course does not prove completion.
+
+**Portfolio positioning:** retain as a learning/reference repository. Future personal exercises should identify what was adapted, the source and applicable license, human/AI assistance, and what was independently implemented and checked. No completed personal exercise is evidenced at the reviewed head.
+
+[Editable provenance/workspace map](docs/workspace.excalidraw) · [Static preview](docs/workspace.svg) · [Diagram maintenance](docs/README.md)
+
+![Provenance and workspace map](docs/workspace.svg)
 
 ## 🎯 What This Is
 
-This companion provides everything you need to master Python automation:
-- ✅ Complete Python environment with all automation packages
-- ✅ Official book resources and code examples
-- ✅ Detailed chapter guides and exercises
-- ✅ Automation-focused quick reference cheat sheets
-- ✅ Test scripts and sandboxes for experimentation
-- ✅ Sample files for practicing automation tasks
-- ✅ Project templates and examples
+Tracked learning scaffolding includes:
+- A 24-chapter overview and two automation cheat sheets
+- A pinned dependency list, not proof of installed packages
+- A setup verifier with known limitations and an empty sandbox function
+- An unresolved upstream gitlink, not a bundled copy of book examples
+
+`venv/`, `my_work/`, `sample_files/`, individual chapter guides, and project templates were **not tracked** at the reviewed head. They are local/planned resources, not supplied exercises. Network access is needed for dependency downloads and online services; offline completeness is not established.
 
 ## 🚀 Quick Start
 
-### 1. Verify Setup
+### 1. Prepare a local environment (commands documented, not run)
+
+No application build or packaging step is defined. Start with Python's standard library for early chapters. These Unix/macOS shell commands are setup guidance, not a validated installation recipe:
+
 ```bash
+python3 -m venv venv
 source venv/bin/activate
+```
+
+For Windows activation use `venv\Scripts\Activate.ps1` in PowerShell. Before any optional full installation, review `requirements.txt`: it pins many **macOS-only PyObjC frameworks without platform markers**. Do not treat it as a portable Linux/Windows lockfile. A supported Python/macOS combination has not been established here; the verifier's Python 3.7 claim is not dependency compatibility evidence.
+
+```bash
+# Optional, only after reviewing platform/dependency compatibility:
+python -m pip install -r requirements.txt
+# Optional diagnostic: imports desktop-related packages; not a safe CI gate:
 python verify_setup.py
 ```
+
+**Verifier limitations:** package results are not accumulated into `all_good`; failed diagnostics do not set a failing process exit status; directories are checked only for existence. Imports can depend on a GUI session or OS permissions. Neither a zero exit code nor its success message proves a working automation environment. No runtime fix is included in this docs-only cleanup.
 
 ### 2. Start Learning
 Open `exercises/CHAPTERS_OVERVIEW.md` to see all 24 chapters.
 
 ### 3. Your First Automation
 ```bash
+# Create your own workspace; it is not supplied in this checkout.
+mkdir -p my_work/chapter_01
 cd my_work/chapter_01
-python
->>> print("Hello, automation!")
+python -c 'print("Hello, automation!")'
 ```
 
-## 📁 Project Structure
+## Tracked source at the reviewed head
+
+- `README.md`, `WARP.md`: project and agent guidance
+- `exercises/CHAPTERS_OVERVIEW.md`: overview, not completed exercises
+- `quick_reference/`: regex and file-automation cheat sheets
+- `requirements.txt`: pinned packages, including macOS-specific dependencies
+- `verify_setup.py`, `automation_test.py`: diagnostic and placeholder sandbox
+- `book_resources/official_code`: unresolved gitlink, not an audited source directory
+
+## Suggested local layout (not all supplied)
+
+The following is a **planned/local layout**, not the tracked inventory. The `official_code` label reflects the original intent only; its source is unresolved.
 
 ```
 automate-boring-stuff-companion/
@@ -40,8 +80,8 @@ automate-boring-stuff-companion/
 ├── automation_test.py           # Test sandbox
 ├── requirements.txt             # All packages
 │
-├── book_resources/              # Official book code
-│   └── official_code/          # From Al Sweigart's GitHub
+├── book_resources/              # Reference location
+│   └── official_code          # Unresolved gitlink; not bundled code
 │
 ├── my_work/                     # YOUR workspace
 │   ├── chapter_01/             # Python basics
@@ -100,7 +140,7 @@ Learn to automate everything:
 - **Chapter 23: GUI Automation** - Control keyboard and mouse
 - **Chapter 24: Speech** - Text-to-speech and recognition
 
-## 🛠 Installed Automation Packages
+## Packages listed in requirements (installation unverified)
 
 ### File & Document Automation
 - **openpyxl** - Excel files (.xlsx)
@@ -130,7 +170,9 @@ Learn to automate everything:
 - **python-dateutil** - Date/time manipulation
 - **pytz** - Timezone handling
 
-## 💡 Common Automation Projects
+## Illustrative automation snippets (not completed projects)
+
+These existing examples are retained as learning references, not validated production scripts. File examples can move/rename real data; use disposable copies in a directory you created yourself. Do not run them on Downloads, private documents, or real recipients. No sends or automation were run during this cleanup.
 
 ### File Organization
 ```python
@@ -260,10 +302,14 @@ msg['To'] = 'recipient@example.com'
 
 ## 🧪 Testing Your Scripts
 
-### Use the Test Sandbox
+### Use the sandbox only after reviewing your code
+
+`test_automation()` currently contains only `pass`. Its success output is not evidence of useful automation. `python -m pytest` may collect that empty function without testing meaningful behavior; no substantive test suite is supplied.
+
 ```bash
-# Edit automation_test.py and run:
+# Optional future use after adding safe, isolated code (not run here):
 python automation_test.py
+python -m pytest
 ```
 
 ### Run Automation Scripts Safely
@@ -386,10 +432,11 @@ shutil.copy('data.xlsx', f'backup_{timestamp}_data.xlsx')
 
 ## 📖 Additional Resources
 
-### In This Package
-- Official Al Sweigart book code in `book_resources/`
-- Sample files for practice in `sample_files/`
-- Cheat sheets in `quick_reference/`
+### Available and planned resources
+- Unresolved reference gitlink in `book_resources/`; upstream code is not bundled or verified
+- `sample_files/` is a suggested local practice directory, not supplied data
+- Tracked cheat sheets in `quick_reference/`
+- Detailed chapter guides and templates are future work
 
 ### Online (When Available)
 - Book website: https://automatetheboringstuff.com
@@ -424,13 +471,14 @@ After completing this book, you can:
 # Activate your environment
 source venv/bin/activate
 
-# Verify everything works
+# Optional diagnostic only; see limitations above
 python verify_setup.py
 
 # Start with Chapter 1
 open exercises/CHAPTERS_OVERVIEW.md
 
-# Begin automating!
+# Create a workspace before using it
+mkdir -p my_work/chapter_01
 cd my_work/chapter_01
 ```
 

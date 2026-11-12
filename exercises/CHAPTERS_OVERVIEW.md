@@ -1,4 +1,6 @@
-# Automate the Boring Stuff with Python - Complete Chapter Guide
+# Automate the Boring Stuff with Python — Chapter Overview
+
+Companion roadmap for Al Sweigart's book (3rd Edition), not a record of completed exercises or a substitute for the book. See [README](../README.md) for attribution, source, setup, and licensing limits.
 
 ## Part I: Python Programming Basics
 
@@ -203,6 +205,6 @@
 
 ## Exercise Files Location
 
-Each chapter has a detailed guide in `exercises/chapter_XX_name.md`
-Your workspace: `my_work/chapter_XX/`
-Book resources: `book_resources/official_code/`
+Only this chapter overview is supplied in `exercises/` at the reviewed source head. Individual `exercises/chapter_XX_name.md` guides are planned, not present.
+
+Create your own `my_work/chapter_XX/` workspace as needed; no completed personal exercises are tracked at the reviewed head. `book_resources/official_code` is an unresolved gitlink, not a verified checkout of book resources (see README).

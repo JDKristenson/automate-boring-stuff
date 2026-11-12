@@ -4,30 +4,30 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 
 ## Project Overview
 
-This is a learning environment for "Automate the Boring Stuff with Python" (3rd Edition). It's designed as a self-contained workspace where learners practice Python automation through 24 chapters, progressing from basics to advanced automation tasks.
+This is a learning environment for "Automate the Boring Stuff with Python" (3rd Edition). It is a learning/reference scaffold organized around 24 chapters, not a complete self-contained or offline environment. See README.md for the dated source review, attribution, licensing uncertainty, and setup limitations. Do not assume local dependencies or practice directories exist.
 
 **Core Purpose:** Educational companion for mastering Python automation - from file operations and web scraping to GUI automation and document processing.
 
 ## Environment Setup
 
 ### Virtual Environment
-Always activate the virtual environment before running any Python scripts:
+Create a local environment with `python3 -m venv venv` if needed, then activate it before running project scripts. No environment is tracked or verified:
 
 ```bash
 source venv/bin/activate
 ```
 
 ### Verification
-To verify the environment is correctly set up:
+Optional diagnostic command after reviewing the README limitations (not proof of correct setup):
 
 ```bash
 python verify_setup.py
 ```
 
-This checks Python version, installed packages, and directory structure.
+This attempts Python/package/directory diagnostics, but package return values are discarded, failure is not reflected in process exit status, and existence checks do not validate contents. Imports may require a GUI session. It is not a reliable CI gate or proof of a working environment.
 
 ### Package Management
-All required packages are in `requirements.txt`. If packages need reinstalling:
+`requirements.txt` is a pinned list with unmarked macOS-only PyObjC packages, not a verified cross-platform lockfile. Review platform/Python compatibility before optionally installing; the verifier's Python 3.7 claim does not validate these pins:
 
 ```bash
 pip install -r requirements.txt
@@ -47,7 +47,8 @@ python verify_setup.py
 # Run automation test sandbox
 python automation_test.py
 
-# Run tests (pytest is installed)
+# Optional pytest invocation after installation (not verified installed;
+# the tracked sandbox test is empty, not a substantive test suite)
 pytest
 
 # Run a single test file
@@ -72,7 +73,9 @@ python script_name.py
 
 ## Repository Architecture
 
-### Directory Structure
+### Suggested Local Directory Structure (not a tracked inventory)
+
+At reviewed head `c2e237fa1cb73f8448c2d90fa160d57f083de16f`, `venv/`, `my_work/`, and `sample_files/` were absent from Git. Individual chapter exercise files and templates were not supplied. `book_resources/official_code` is an unresolved gitlink without a tracked `.gitmodules` URL; do not guess its source or license.
 
 ```
 automate-boring-stuff-companion/
@@ -81,7 +84,7 @@ automate-boring-stuff-companion/
 ├── exercises/                 # Chapter guides (CHAPTERS_OVERVIEW.md)
 ├── quick_reference/           # Cheat sheets (regex, file automation)
 ├── sample_files/              # Practice data (pdfs/, excel_files/, images/, etc.)
-├── book_resources/            # Official Al Sweigart code examples
+├── book_resources/            # Unresolved reference gitlink; not bundled examples
 ├── verify_setup.py            # Environment verification script
 └── automation_test.py         # Sandbox for testing automation code
 ```
@@ -89,8 +92,8 @@ automate-boring-stuff-companion/
 ### Key Architectural Concepts
 
 #### 1. Workspace Organization
-- **my_work/** is the primary development area with 24 chapter-specific folders (chapter_01 through chapter_24) plus an automation_projects/ folder
-- Each chapter folder is initially empty, intended for learner's practice scripts
+- **my_work/** is the proposed development area for chapter-specific folders (chapter_01 through chapter_24) plus automation_projects/
+- Create only the folders needed for personal practice; they are not supplied
 - The automation_projects/ folder is for custom automation projects beyond the book
 
 #### 2. Learning Progression
@@ -101,8 +104,8 @@ The project follows a clear two-part structure:
 Key inflection point: Chapter 9 (Regular Expressions) marks the transition from learning Python to applying it for automation.
 
 #### 3. Safety-First Design
-- **sample_files/** directory provides safe practice data organized by type (pdfs/, excel_files/, images/, text_files/, word_docs/)
-- **automation_test.py** serves as an isolated sandbox with error handling
+- **sample_files/** is a proposed practice-data directory; create disposable synthetic files yourself
+- **automation_test.py** is a placeholder with error handling, not an isolation boundary. Review any added code before execution
 - Scripts should be tested on sample files before running on real data
 
 #### 4. Reference Materials
@@ -196,9 +199,9 @@ Scheduling (schedule module), communications (smtplib), image processing (Pillow
 
 ## Platform-Specific Notes
 
-### macOS (Current Platform)
+### macOS (original dependency-list target; current host not assumed)
 - PyAutoGUI requires Accessibility permissions: System Preferences → Security & Privacy → Accessibility → Add Terminal/Editor
-- pyobjc frameworks are installed for macOS-specific automation features
+- PyObjC frameworks are listed, not verified installed; supported Python/macOS versions remain unvalidated
 - Use `open` command to view files from terminal: `open file.txt`
 
 ### Browser Automation (Selenium)
@@ -211,12 +214,14 @@ brew install chromedriver
 ## Important Conventions
 
 ### When Modifying Files
-- Never modify files in book_resources/official_code/ - these are reference materials
+- Never modify book_resources/official_code - preserve the reference gitlink and any separately resolved upstream material
 - All development work belongs in my_work/
 - Use sample_files/ for testing file automation scripts
 
 ### When Helping with Code
-- Assume the virtual environment is active (or remind to activate it)
+- Check setup rather than assuming a virtual environment, installed packages, or practice directories
+- Preserve Al Sweigart/third-edition book attribution, JDKristenson's recorded human credit, and Warp's initial-commit AI co-author credit. This documentation/diagram cleanup was assisted by Reason; no file-level original-authorship claim or new license grant is implied
+- Keep the unresolved gitlink unchanged until its actual upstream and rights are established; do not import or redistribute guessed upstream material
 - Suggest testing in automation_test.py for quick experiments
 - Reference appropriate quick_reference/ cheatsheet when relevant
 - Point to specific chapter folder in my_work/ for chapter-specific work
